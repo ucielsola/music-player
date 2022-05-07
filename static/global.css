@@ -1,0 +1,12 @@
+:root {
+	--primary: hsl(347, 95%, 53%);
+	--secondary: hsl(178, 35%, 78%);
+	--background: hsl(120, 33%, 1%);
+	--contrast: hsl(0, 0%, 93%);
+
+	--padding: 0.5rem;
+}
+
+* {
+	color: var(--contrast);
+}

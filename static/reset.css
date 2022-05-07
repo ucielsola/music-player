@@ -1,0 +1,60 @@
+/* Box Sizing */
+ *, *::before, *::after {
+    . 
+    /* Prevent setting borders from increasing the size of an element */
+     box-sizing: border-box;
+     text-rendering: optimizeLegibility;
+     -webkit-tap-highlight-color: transparent;
+}
+/* Remove default margin and padding */
+ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+     margin: 0;
+     padding: 0;
+}
+/* Allow % styles to work on page */
+ html, body {
+     border: none;
+     height: 100%;
+}
+/* for better readability */
+ body {
+     letter-spacing: 0.01rem;
+     line-height: 1.8;
+    /* Globally adjust line height */
+}
+/* Remove bullets from unordered lists */
+ ul {
+     list-style: none;
+}
+/* Setting up embedded content */
+ audio, canvas, iframe, img, embed, object, svg, video {
+     display: block;
+     max-width: 100%;
+     height: auto;
+}
+/* Page sections set to block */
+ article, aside, figure, footer, header, hgroup, section {
+     display: block;
+}
+/* Inputs must inherit font */
+ button, input, optgroup, select, textarea {
+     margin: 0;
+     font-family: inherit;
+     font-size: inherit;
+}
+/* Hidden elements must not show */
+ [hidden], .hidden {
+     display: none !important;
+}
+/* Remove all animations based on preference */
+ @media (prefers-reduced-motion: reduce) {
+     html:focus-within {
+         scroll-behavior: auto;
+    }
+     *, *::before, *::after {
+         animation-duration: 0.01ms !important;
+         animation-iteration-count: 1 !important;
+         transition-duration: 0.01ms !important;
+         scroll-behavior: auto !important;
+    }
+}
