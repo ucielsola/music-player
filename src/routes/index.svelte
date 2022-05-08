@@ -13,8 +13,10 @@
 	let title;
 
 	$: if ($album != 'loading' && browser) {
-		initPlayer();
-		title = `${$album.artist} - ${$album.title}`;
+		setTimeout(() => {
+			initPlayer();
+		}, 100);
+		title = `SUD - De Un Día al Otro Aparecimos`;
 		setTimeout(() => {
 			loading = false;
 		}, 300);
