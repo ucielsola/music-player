@@ -7,8 +7,6 @@ let _album;
 
 let canResume = false;
 
-let lastPlayed = -1;
-
 const events = ['ended', 'error', 'play', 'playing', 'pause', 'timeupdate', 'canplay'];
 
 const addAudioEvents = () => {
@@ -28,9 +26,8 @@ const handlers = (e) => {
 	switch (e.type) {
 		case 'ended':
 			if (_album.songs.length === get(currentTrack)) return;
-			if (isRepeat) return Play(get(currentTrack));
-			if (isShuffle) return Play(randomTrack());
-
+			if (get(isRepeat)) return Play(get(currentTrack));
+			if (get(isShuffle)) return Play(randomTrack());
 			Play(get(currentTrack) + 1);
 			playing.set(true);
 			break;
@@ -115,7 +112,6 @@ export const Play = (trackNum = 0) => {
 	audio.crossOrigin = 'anonymous';
 	audio.load();
 	audio.play().then(() => {
-		lastPlayed = get(currentTrack);
 		currentTrack.set(trackNum);
 	});
 };
@@ -133,8 +129,7 @@ export const Next = () => {
 
 export const Previous = () => {
 	if (get(isRepeat)) return Play(get(currentTrack));
-	if (lastPlayed < 0) return Play(_album.songs.length - 1);
-	Play(lastPlayed);
+	Play(get(currentTrack) - 1);
 };
 
 export const Pause = () => {
