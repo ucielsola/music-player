@@ -1,6 +1,8 @@
 :root {
 	/* colors */
-	--primary: hsl(347, 95%, 53%);
+	--primary: #f91547;
+	--filter-primary: invert(17%) sepia(91%) saturate(5099%) hue-rotate(340deg) brightness(101%)
+		contrast(95%);
 	--secondary: hsla(177, 36%, 78%, 0.9);
 	--background: hsl(120, 33%, 1%);
 	--contrast: hsl(0, 0%, 93%);

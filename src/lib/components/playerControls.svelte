@@ -5,6 +5,9 @@
 		Next,
 		Previous,
 		Seek,
+		Shuffle,
+		Repeat,
+		Mute,
 		playing,
 		currentTime,
 		trackLength,
@@ -15,6 +18,7 @@
 	import { album } from '$lib/contentService.js';
 	import ProgressBar from './controls/progressBar.svelte';
 	import TrackButtons from './controls/trackButtons.svelte';
+	import OptionsButtons from './controls/optionsButtons.svelte';
 	const handleSeek = (e) => {
 		Seek(e.detail.value);
 	};
@@ -44,6 +48,7 @@
 		length={$trackLength}
 		playing={$playing}
 	/>
+	<OptionsButtons on:suffle={() => Shuffle()} on:suffle={() => Repeat()} on:suffle={() => Mute()} />
 </div>
 
 <style>
