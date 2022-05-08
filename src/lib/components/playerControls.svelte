@@ -2,6 +2,8 @@
 	import {
 		Play,
 		Pause,
+		Next,
+		Previous,
 		Seek,
 		playing,
 		currentTime,
@@ -25,7 +27,13 @@
 </script>
 
 <div class="container slide-in-bottom">
-	<TrackButtons on:pause={() => Pause()} on:play={() => Play()} playing={$playing} />
+	<TrackButtons
+		on:pause={() => Pause()}
+		on:play={() => Play()}
+		on:next={() => Next()}
+		on:prev={() => Previous()}
+		playing={$playing}
+	/>
 	<div class="title">
 		<h1>{nowPlaying}</h1>
 	</div>
@@ -47,10 +55,11 @@
 		bottom: 0;
 		min-height: var(--controls-height);
 		width: 100%;
+		max-width: var(--max-width);
 		border-radius: 1.5rem 1.5rem 0 0;
-		background-color: var(--contrast);
+		background-color: var(--secondary);
 		border-top: 1px solid hsl(120deg 33% 1% / 77%);
-		box-shadow: var(--contrast) 0px 16px 50px 12px;
+		box-shadow: var(--glow);
 	}
 
 	.title {

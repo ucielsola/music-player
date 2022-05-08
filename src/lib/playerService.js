@@ -84,6 +84,16 @@ export const Seek = (newPosition) => {
 	audio.currentTime = (get(trackLength) * newPosition) / 1000;
 };
 
+export const Next = () => {
+	let nextTrack = get(currentTrack) === _album.songs.length - 1 ? 0 : get(currentTrack) + 1;
+	Play(nextTrack);
+};
+
+export const Previous = () => {
+	let prevTrack = get(currentTrack) === 0 ? _album.songs.length - 1 : get(currentTrack) - 1;
+	Play(prevTrack);
+};
+
 export const Pause = () => {
 	audio.pause();
 };
