@@ -61,7 +61,7 @@ export const playing = writable(false);
 
 export const progress = writable(0);
 
-export const currentTrack = writable(false);
+export const currentTrack = writable(-1);
 
 export const currentTime = writable(0);
 
