@@ -26,7 +26,7 @@ query Album {
     }
 } `;
 
-export let album = readable({}, (set) => {
+export let album = readable('loading', (set) => {
 	cms.request(query).then((res) => set(res.album));
 
 	return () => {};
