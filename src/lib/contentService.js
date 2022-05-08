@@ -19,6 +19,7 @@ query Album {
       }
       songs {
         title
+        duration
         file {
           url
         }
@@ -27,7 +28,10 @@ query Album {
 } `;
 
 export let album = readable('loading', (set) => {
-	cms.request(query).then((res) => set(res.album));
+	cms.request(query).then((res) => {
+		set(res.album);
+		// console.log(res.album);
+	});
 
 	return () => {};
 });
