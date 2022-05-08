@@ -1,7 +1,7 @@
 <script>
 	import { browser } from '$app/env';
 	import { fade } from 'svelte/transition';
-	import { album } from '$lib/contentService.js';
+	import { album, getData } from '$lib/contentService.js';
 	import { initPlayer, currentTrack, playing } from '$lib/playerService.js';
 	import PlayerControls from '$lib/components/playerControls.svelte';
 	import Tracklist from '$lib/components/tracklist.svelte';
@@ -12,14 +12,14 @@
 	let loading = true;
 	let title;
 
-	$: if ($album != 'loading' && browser) {
-		setTimeout(() => {
+	$: if (browser) {
+		getData().then(() => {
 			initPlayer();
-		}, 100);
-		title = `SUD - De Un Día al Otro Aparecimos`;
-		setTimeout(() => {
-			loading = false;
-		}, 300);
+			title = `SUD - De Un Día al Otro Aparecimos`;
+			setTimeout(() => {
+				loading = false;
+			}, 300);
+		});
 	}
 
 	$: if ($playing) {

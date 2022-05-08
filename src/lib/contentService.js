@@ -1,6 +1,6 @@
 // api https://api-sa-east-1.graphcms.com/v2/cl2wb8fn61q2p01wbhuk6ggs4/master
 
-import { readable } from 'svelte/store';
+import { get, readable, writable } from 'svelte/store';
 import { GraphQLClient } from 'graphql-request';
 const cms = new GraphQLClient(
 	'https://api-sa-east-1.graphcms.com/v2/cl2wb8fn61q2p01wbhuk6ggs4/master'
@@ -27,11 +27,14 @@ query Album {
     }
 } `;
 
-export let album = readable('loading', (set) => {
-	cms.request(query).then((res) => {
-		set(res.album);
-		// console.log(res.album);
-	});
+export let album = writable('');
 
-	return () => {};
-});
+export const getData = async () => {
+	const res = await cms.request(query);
+	album.set(await res.album);
+
+	return new Promise((res, rej) => {
+		if (get(album)) return res();
+		return rej((err) => alert(err));
+	});
+};
