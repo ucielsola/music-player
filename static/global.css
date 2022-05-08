@@ -5,6 +5,7 @@
 	--contrast: hsl(0, 0%, 93%);
 
 	--padding: 0.5rem;
+	--controls-height: 7rem;
 }
 
 * {
