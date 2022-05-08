@@ -32,6 +32,7 @@
 		border: none;
 		background: none;
 		outline: none;
+		cursor: pointer;
 	}
 
 	.container {
