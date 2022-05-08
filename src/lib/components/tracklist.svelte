@@ -16,8 +16,8 @@
 		<h1>{artist}</h1>
 		<h2>{title}</h2>
 		{#each tracks as track, i}
-			<div class="row">
-				<h3 id={i} class={i === $currentTrack ? 'active' : ''} on:click={() => Play(i)}>
+			<div class="row" on:click={() => Play(i)}>
+				<h3 id={i} class={i === $currentTrack ? 'active' : ''}>
 					{'0' + (i + 1)} - {track.title}
 				</h3>
 				<span>{formatTime(track.duration)}</span>

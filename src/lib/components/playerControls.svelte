@@ -6,8 +6,11 @@
 		Previous,
 		Seek,
 		Shuffle,
+		isShuffle,
 		Repeat,
+		isRepeat,
 		Mute,
+		isMuted,
 		playing,
 		currentTime,
 		trackLength,
@@ -19,6 +22,7 @@
 	import ProgressBar from './controls/progressBar.svelte';
 	import TrackButtons from './controls/trackButtons.svelte';
 	import OptionsButtons from './controls/optionsButtons.svelte';
+
 	const handleSeek = (e) => {
 		Seek(e.detail.value);
 	};
@@ -28,6 +32,19 @@
 	$: if ($currentTrack >= 0) {
 		nowPlaying = `${$album.artist} - ${$album.songs[$currentTrack]?.title}`;
 	}
+	const handleOptions = (e) => {
+		switch (e.detail.action) {
+			case 'shuffle':
+				Shuffle();
+				break;
+			case 'repeat':
+				Repeat();
+				break;
+			case 'mute':
+				Mute();
+				break;
+		}
+	};
 </script>
 
 <div class="container slide-in-bottom">
@@ -48,7 +65,12 @@
 		length={$trackLength}
 		playing={$playing}
 	/>
-	<OptionsButtons on:suffle={() => Shuffle()} on:suffle={() => Repeat()} on:suffle={() => Mute()} />
+	<OptionsButtons
+		on:sendClick={handleOptions}
+		onRepeat={$isRepeat}
+		onMute={$isMuted}
+		onShuffle={$isShuffle}
+	/>
 </div>
 
 <style>

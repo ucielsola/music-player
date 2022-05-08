@@ -1,21 +1,28 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
-
-	function handleClick(action, e) {
-		e.target.toggleAttribute('default');
-		dispatch(action, {});
-	}
+	export let onShuffle;
+	export let onRepeat;
+	export let onMute;
 </script>
 
 <div class="container">
-	<button on:click={(e) => handleClick('shuffle', e)} default>
+	<button
+		on:click={() => dispatch('sendClick', { action: 'shuffle' })}
+		state={onShuffle ? '' : 'pressed'}
+	>
 		<img src="assets/icons/shuffle.png" alt="" />
 	</button>
-	<button on:click={(e) => handleClick('repeat', e)} default>
+	<button
+		on:click={() => dispatch('sendClick', { action: 'repeat' })}
+		state={onRepeat ? '' : 'pressed'}
+	>
 		<img src="assets/icons/repeat.png" alt="" />
 	</button>
-	<button on:click={(e) => handleClick('mute', e)} default>
+	<button
+		on:click={() => dispatch('sendClick', { action: 'mute' })}
+		state={onMute ? '' : 'pressed'}
+	>
 		<img src="assets/icons/mute.png" alt="" />
 	</button>
 </div>
@@ -30,10 +37,10 @@
 		filter: var(--filter-primary);
 	}
 	button img {
-		pointer-events: none;
+		/* pointer-events: none; */
 	}
 
-	button[default] {
+	button[state='pressed'] {
 		filter: none;
 	}
 </style>
