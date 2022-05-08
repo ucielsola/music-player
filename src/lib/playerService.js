@@ -53,16 +53,14 @@ const handlers = (e) => {
 	}
 };
 
-export const createContext = () => {
+export const initPlayer = () => {
 	_album = get(album);
 	audio = new Audio();
 	addAudioEvents();
 
 	document.addEventListener('keydown', (e) => {
-		if (e.code === 'Space' && get(playing)) {
-			return Pause();
-		} else {
-			return Play();
+		if (e.code === 'Space') {
+			return get(playing) ? Pause() : Play();
 		}
 	});
 };
