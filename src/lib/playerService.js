@@ -19,7 +19,8 @@ const randomTrack = () => {
 	//https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
 	const max = _album.songs.length;
 	const min = 0;
-	return Math.floor(Math.random() * (max - min + 1)) + min;
+	const random = Math.floor(Math.random() * (max - min + 1)) + min;
+	return random != get(currentTrack) ? random : randomTrack();
 };
 
 const handlers = (e) => {
