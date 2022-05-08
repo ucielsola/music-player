@@ -36,9 +36,11 @@ const handlers = (e) => {
 			playing.set(false);
 			break;
 		case 'play':
+			playing.set(true);
 			break;
 		case 'playing':
 			playing.set(true);
+
 			break;
 		case 'pause':
 			canResume = true;
@@ -46,7 +48,7 @@ const handlers = (e) => {
 			break;
 		case 'timeupdate':
 			currentTime.set(audio.currentTime * 1000);
-			console.log(audio.currentTime * 1000);
+			progress.set(get(currentTime) / get(trackLength));
 			break;
 		case 'canplay':
 			break;
@@ -67,6 +69,8 @@ export const initPlayer = () => {
 
 export const playing = writable(false);
 
+export const progress = writable(0);
+
 export const currentTrack = writable(false);
 
 export const currentTime = writable(0);
@@ -78,12 +82,16 @@ export const Play = (trackNum = 0) => {
 		canResume = false;
 		return audio.play();
 	}
-
-	audio.src = _album.songs[trackNum].file.url;
+	let source = _album.songs[trackNum];
+	audio.src = source.file.url;
+	trackLength.set(source.duration);
 	audio.crossOrigin = 'anonymous';
 	audio.load();
-	trackLength.set(audio.duration);
 	audio.play().then(() => currentTrack.set(trackNum));
+};
+
+export const Seek = (newPosition) => {
+	audio.currentTime(newPosition);
 };
 
 export const Pause = () => {
