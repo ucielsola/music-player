@@ -27,6 +27,7 @@
 <style>
 	.wrapper {
 		position: relative;
+		padding: var(--padding);
 	}
 
 	.out {
