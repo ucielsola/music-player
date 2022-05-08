@@ -2,7 +2,7 @@
 	import { browser } from '$app/env';
 	import { fade } from 'svelte/transition';
 	import { album } from '$lib/contentService.js';
-	import { initPlayer } from '$lib/playerService.js';
+	import { initPlayer, currentTrack, playing } from '$lib/playerService.js';
 	import PlayerControls from '$lib/components/playerControls.svelte';
 	import Tracklist from '$lib/components/tracklist.svelte';
 
@@ -10,14 +10,24 @@
 	import Loader from '../lib/components/loader.svelte';
 	import Social from '../lib/components/social.svelte';
 	let loading = true;
+	let title;
 
 	$: if ($album != 'loading' && browser) {
 		initPlayer();
+		title = `${$album.artist} - ${$album.title}`;
 		setTimeout(() => {
 			loading = false;
 		}, 300);
 	}
+
+	$: if ($playing) {
+		title = `${$album.artist} - ${$album.songs[$currentTrack]?.title}`;
+	}
 </script>
+
+<svelte:head>
+	<title>{title}</title>
+</svelte:head>
 
 {#if loading}
 	<div class="loader-wrapper" out:fade>
