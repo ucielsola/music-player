@@ -1,19 +1,53 @@
 <script>
-	export let value;
-	export let time = 0;
-	export let length = 0;
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
 
-	function formatTime(ms) {
+	export let value;
+	export let time;
+	export let length;
+	export let playing;
+	let isSeeking = false;
+	let seekValue;
+
+	const formatTime = (ms = 0) => {
 		let minutes = Math.floor(ms / 60000);
 		let seconds = ((ms % 60000) / 1000).toFixed(0);
 		return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-	}
+	};
+
+	const seekStart = () => {
+		isSeeking = true;
+	};
+
+	const seeking = (e) => {
+		seekValue = e.target.value * length;
+	};
+
+	const seekEnd = (e) => {
+		dispatch('updateTime', { value: e.target.value });
+
+		setTimeout(() => {
+			//debouncing to avoid bar thumb jumping
+			isSeeking = false;
+		}, 10);
+	};
 </script>
 
 <div class="container">
-	<input type="range" id="slider" min={0} max={1} step={0.001} {value} />
+	<input
+		type="range"
+		id="slider"
+		on:touchstart={(e) => seekStart(e)}
+		on:touchmove={(e) => seeking(e)}
+		on:touchend={(e) => seekEnd(e)}
+		min={0}
+		max={1}
+		step={0.001}
+		value={isSeeking ? seekValue : value}
+		disabled={!time && !playing}
+	/>
 	<div class="times">
-		<span>{formatTime(time)}</span>
+		<span>{formatTime(isSeeking ? seekValue : time)}</span>
 		<span>-{formatTime(length - time)}</span>
 	</div>
 </div>
@@ -40,6 +74,9 @@
 		color: #000000;
 	}
 
+	input:disabled {
+		pointer-events: none;
+	}
 	input[type='range'] {
 		height: 30px;
 		-webkit-appearance: none;

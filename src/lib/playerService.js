@@ -7,17 +7,7 @@ let _album;
 
 let canResume = false;
 
-const events = [
-	'ended',
-	'error',
-	'play',
-	'playing',
-	'pause',
-	'timeupdate',
-	'canplay',
-	'canplaythrough',
-	'loadedmetadata'
-];
+const events = ['ended', 'error', 'play', 'playing', 'pause', 'timeupdate', 'canplay'];
 
 const addAudioEvents = () => {
 	events.forEach((ev) => {
@@ -91,7 +81,7 @@ export const Play = (trackNum = 0) => {
 };
 
 export const Seek = (newPosition) => {
-	audio.currentTime(newPosition);
+	audio.currentTime = (get(trackLength) * newPosition) / 1000;
 };
 
 export const Pause = () => {

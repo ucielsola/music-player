@@ -10,11 +10,20 @@
 	} from '$lib/playerService.js';
 	import ProgressBar from './controls/progressBar.svelte';
 	import TrackButtons from './controls/trackButtons.svelte';
+	const handleSeek = (e) => {
+		Seek(e.detail.value);
+	};
 </script>
 
 <div class="container">
 	<TrackButtons on:pause={() => Pause()} on:play={() => Play()} playing={$playing} />
-	<ProgressBar value={$progress} time={$currentTime} length={$trackLength} />
+	<ProgressBar
+		on:updateTime={handleSeek}
+		value={$progress}
+		time={$currentTime}
+		length={$trackLength}
+		playing={$playing}
+	/>
 </div>
 
 <style>
