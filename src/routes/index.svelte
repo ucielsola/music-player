@@ -1,10 +1,10 @@
 <script>
 	import { album } from '$lib/contentService.js';
-	import { initPlayer, playing } from '$lib/playerService.js';
-	import Controls from '../lib/components/controls.svelte';
-	import Tracklist from '../lib/components/tracklist.svelte';
+	import { initPlayer } from '$lib/playerService.js';
+	import PlayerControls from '$lib/components/playerControls.svelte';
+	import Tracklist from '$lib/components/tracklist.svelte';
 	import { browser } from '$app/env';
-	import Header from '../lib/components/header.svelte';
+	import Header from '$lib/components/header.svelte';
 
 	$: if ($album != 'loading' && browser) initPlayer();
 </script>
@@ -13,7 +13,7 @@
 	{#await $album then}
 		<Header artist={$album.artist} cover={$album.cover} back={$album.back} title={$album.title} />
 		<Tracklist tracks={$album.songs} />
-		<Controls />
+		<PlayerControls />
 	{/await}
 </main>
 

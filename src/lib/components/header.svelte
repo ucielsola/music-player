@@ -8,7 +8,7 @@
 </script>
 
 <div class="container">
-	<CoverSlider images={[cover, back]} altText="{artist} - {title}" />
+	<CoverSlider images={[cover?.url, back?.url]} altText="{artist} - {title}" />
 </div>
 
 <style>

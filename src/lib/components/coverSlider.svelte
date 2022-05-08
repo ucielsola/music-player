@@ -3,21 +3,20 @@
 	export let altText;
 	let fade = 'in';
 	let url;
+	let index = 0;
 	const duration = 15000;
 
+	$: images && (url = images[index]);
+
 	setInterval(() => {
-		console.log(654);
 		fade = 'out';
-		setTimeout(changeImage, 750);
+		setTimeout(swapImage, 750);
 		setTimeout(() => (fade = 'in'), 751);
 	}, duration);
 
-	$: images && (url = images[0]?.url);
-
-	function changeImage() {
-		let nextUrl = images[Math.floor(Math.random() * images.length)].url;
-		if (url === nextUrl) return changeImage();
-		url = nextUrl;
+	function swapImage() {
+		if (index === images.length - 1) return (index = 0);
+		index++;
 	}
 </script>
 
