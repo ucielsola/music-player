@@ -1,5 +1,7 @@
 <script>
 	import { Play, currentTrack } from '$lib/playerService.js';
+	export let artist;
+	export let title;
 	export let tracks;
 
 	const formatTime = (ms = 0) => {
@@ -11,6 +13,8 @@
 
 <div class="container">
 	{#if tracks}
+		<h1>{artist}</h1>
+		<h2>{title}</h2>
 		{#each tracks as track, i}
 			<div class="row">
 				<h3 id={i} class={i === $currentTrack ? 'active' : ''} on:click={() => Play(i)}>
@@ -25,7 +29,6 @@
 <style>
 	.container {
 		padding-inline: var(--padding);
-		font-size: 0.7rem;
 	}
 	.row {
 		display: flex;
@@ -34,5 +37,20 @@
 	}
 	.active {
 		color: var(--primary);
+	}
+
+	h1 {
+		color: var(--secondary);
+		font-size: var(--f-size-l);
+	}
+
+	h2 {
+		margin-block-start: -0.75rem;
+		color: var(--primary);
+		font-size: var(--f-size-m);
+	}
+	h3,
+	span {
+		font-size: var(--f-size-s);
 	}
 </style>

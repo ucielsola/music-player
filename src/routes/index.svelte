@@ -8,6 +8,7 @@
 
 	import Header from '$lib/components/header.svelte';
 	import Loader from '../lib/components/loader.svelte';
+	import Social from '../lib/components/social.svelte';
 	let loading = true;
 
 	$: if ($album != 'loading' && browser) {
@@ -25,8 +26,9 @@
 {:else}
 	<main transition:fade={{ delay: 400 }}>
 		<Header artist={$album.artist} cover={$album.cover} back={$album.back} title={$album.title} />
-		<Tracklist tracks={$album.songs} />
+		<Tracklist tracks={$album.songs} artist={$album.artist} title={$album.title} />
 		<PlayerControls />
+		<Social />
 	</main>
 {/if}
 
@@ -38,10 +40,12 @@
 		min-height: 100vh;
 	}
 	main {
-		/* position: relative; */
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
-		padding-bottom: calc(1rem + var(--controls-height));
+		max-width: var(--max-width);
+		margin-inline: auto;
+		padding-bottom: var(--controls-height);
 	}
 </style>
