@@ -1,26 +1,40 @@
 :root {
+	/* colors */
 	--primary: hsl(347, 95%, 53%);
-	--secondary: hsl(178, 35%, 78%);
+	--secondary: hsla(177, 36%, 78%, 0.9);
 	--background: hsl(120, 33%, 1%);
 	--contrast: hsl(0, 0%, 93%);
-	--shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
+	/* effects */
+	--shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+	--glow: var(--contrast) 0px 16px 50px 12px;
+
+	/* sizing */
+	--max-width: 500px;
 	--padding: 0.5rem;
 	--controls-height: 7rem;
+
+	/* typo */
+	--f-family: Verdana, sans-serif;
+	--f-size-l: 2rem;
+	--f-size-m: 1rem;
+	--f-size-s: 0.8rem;
 }
 
 html {
 	background-color: var(--background);
-	font-family: Verdana, sans-serif;
+	font-family: var(--f-family);
 }
 
 * {
 	color: var(--contrast);
 }
 
-/* Range Slider */
-
-#slider.rangeSlider {
-	--slider: red;
-	width: 90%;
+@media screen and (min-width: 720px) {
+	:root {
+		--glow: none;
+		--f-size-l: 4rem;
+		--f-size-m: 2rem;
+		--f-size-s: 1.3rem;
+	}
 }
