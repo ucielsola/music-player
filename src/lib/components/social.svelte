@@ -3,7 +3,7 @@
 		><img src="assets/icons/instagram.png" alt="" /></a
 	>
 
-	<a href="https://github.com/ucielsola" target="_blank" rel="nofollow noopener"
+	<a href="https://github.com/ucielsola/sud-player" target="_blank" rel="nofollow noopener"
 		><img src="assets/icons/github.png" alt="" /></a
 	>
 </div>
