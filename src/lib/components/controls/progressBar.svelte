@@ -1,11 +1,6 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
-	const dispatch = createEventDispatcher();
+	import { playerState, Seek } from '$lib/playerService.js';
 
-	export let value;
-	export let time;
-	export let length;
-	export let playing;
 	let isSeeking = false;
 	let seekValue;
 
@@ -24,8 +19,7 @@
 	};
 
 	const seekEnd = (e) => {
-		dispatch('updateTime', { value: e.target.value });
-
+		Seek(e.target.value);
 		setTimeout(() => {
 			//debouncing to avoid bar thumb jumping
 			isSeeking = false;
@@ -38,17 +32,20 @@
 		type="range"
 		id="slider"
 		on:touchstart={(e) => seekStart(e)}
+		on:click={(e) => seekStart(e)}
 		on:touchmove={(e) => seeking(e)}
+		on:input={(e) => seeking(e)}
 		on:touchend={(e) => seekEnd(e)}
+		on:mouseup={(e) => seekEnd(e)}
 		min={0}
 		max={1}
 		step={0.001}
-		value={isSeeking ? seekValue : value}
-		disabled={!time && !playing}
+		value={isSeeking ? seekValue : $playerState.progress}
+		disabled={!$playerState.currentTime && !$playerState.isPlaying}
 	/>
 	<div class="times">
-		<span>{formatTime(isSeeking ? seekValue : time)}</span>
-		<span>-{formatTime(length - time)}</span>
+		<span>{formatTime(isSeeking ? seekValue : $playerState.currentTime)}</span>
+		<span>-{formatTime($playerState.trackLength - $playerState.currentTime)}</span>
 	</div>
 </div>
 

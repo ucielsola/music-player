@@ -1,28 +1,21 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
-	export let playing;
-
-	const dispatch = createEventDispatcher();
-
-	function handleClick(action) {
-		dispatch(action, {});
-	}
+	import { playerState, Play, Pause, Next, Previous } from '$lib/playerService.js';
 </script>
 
 <div class="container">
-	<button class="small" on:click={() => handleClick('prev')} title="Previous">
+	<button class="small" on:click={Previous} title="Previous">
 		<img class="prev" src="assets/icons/previous.png" alt="" />
 	</button>
-	{#if playing}
-		<button class="play-pause" on:click={() => handleClick('pause')} title="Pause">
+	{#if $playerState.isPlaying}
+		<button class="play-pause" on:click={Pause} title="Pause">
 			<img class="pause" src="assets/icons/pause.png" alt="" />
 		</button>
 	{:else}
-		<button class="play-pause" on:click={() => handleClick('play')} title="Play">
+		<button class="play-pause" on:click={() => Play()} title="Play">
 			<img class="play" src="assets/icons/play.png" alt="" />
 		</button>
 	{/if}
-	<button class="small" on:click={() => handleClick('next')} title="Next">
+	<button class="small" on:click={Next} title="Next">
 		<img class="next" src="assets/icons/next.png" alt="" />
 	</button>
 </div>

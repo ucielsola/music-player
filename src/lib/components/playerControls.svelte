@@ -1,22 +1,5 @@
 <script>
-	import {
-		Play,
-		Pause,
-		Next,
-		Previous,
-		Seek,
-		Shuffle,
-		isShuffle,
-		Repeat,
-		isRepeat,
-		Mute,
-		isMuted,
-		playing,
-		currentTime,
-		trackLength,
-		currentTrack,
-		progress
-	} from '$lib/playerService.js';
+	import { playerState } from '$lib/playerService.js';
 
 	import { album } from '$lib/contentService.js';
 	import ProgressBar from './controls/progressBar.svelte';
@@ -29,48 +12,18 @@
 
 	let nowPlaying = '';
 
-	$: if ($currentTrack >= 0) {
-		nowPlaying = `${$album.artist} - ${$album.songs[$currentTrack]?.title}`;
+	$: if ($playerState.currentTrack >= 0) {
+		nowPlaying = `${$album.artist} - ${$album.songs[$playerState.currentTrack]?.title}`;
 	}
-	const handleOptions = (e) => {
-		switch (e.detail.action) {
-			case 'shuffle':
-				Shuffle();
-				break;
-			case 'repeat':
-				Repeat();
-				break;
-			case 'mute':
-				Mute();
-				break;
-		}
-	};
 </script>
 
 <div class="container slide-in-bottom">
-	<TrackButtons
-		on:pause={() => Pause()}
-		on:play={() => Play()}
-		on:next={() => Next()}
-		on:prev={() => Previous()}
-		playing={$playing}
-	/>
+	<TrackButtons />
 	<div class="title">
 		<h1>{nowPlaying}</h1>
 	</div>
-	<ProgressBar
-		on:updateTime={handleSeek}
-		value={$progress}
-		time={$currentTime}
-		length={$trackLength}
-		playing={$playing}
-	/>
-	<OptionsButtons
-		on:sendClick={handleOptions}
-		onRepeat={$isRepeat}
-		onMute={$isMuted}
-		onShuffle={$isShuffle}
-	/>
+	<ProgressBar />
+	<OptionsButtons />
 </div>
 
 <style>

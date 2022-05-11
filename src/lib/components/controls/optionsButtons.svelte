@@ -1,28 +1,15 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
-	const dispatch = createEventDispatcher();
-	export let onShuffle;
-	export let onRepeat;
-	export let onMute;
+	import { playerState, toggleShuffle, toggleRepeat, toggleMute } from '$lib/playerService.js';
 </script>
 
 <div class="container">
-	<button
-		on:click={() => dispatch('sendClick', { action: 'shuffle' })}
-		state={onShuffle ? '' : 'pressed'}
-	>
+	<button on:click={toggleShuffle} state={$playerState.onShuffle ? '' : 'pressed'}>
 		<img src="assets/icons/shuffle.png" alt="" />
 	</button>
-	<button
-		on:click={() => dispatch('sendClick', { action: 'repeat' })}
-		state={onRepeat ? '' : 'pressed'}
-	>
+	<button on:click={toggleRepeat} state={$playerState.onRepeat ? '' : 'pressed'}>
 		<img src="assets/icons/repeat.png" alt="" />
 	</button>
-	<button
-		on:click={() => dispatch('sendClick', { action: 'mute' })}
-		state={onMute ? '' : 'pressed'}
-	>
+	<button on:click={toggleMute} state={$playerState.isMuted ? '' : 'pressed'}>
 		<img src="assets/icons/mute.png" alt="" />
 	</button>
 </div>

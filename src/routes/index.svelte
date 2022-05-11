@@ -2,7 +2,7 @@
 	import { browser } from '$app/env';
 	import { fade } from 'svelte/transition';
 	import { album, getData } from '$lib/contentService.js';
-	import { initPlayer, currentTrack, playing } from '$lib/playerService.js';
+	import { initPlayer, playerState } from '$lib/playerService.js';
 	import PlayerControls from '$lib/components/playerControls.svelte';
 	import Tracklist from '$lib/components/tracklist.svelte';
 
@@ -22,8 +22,8 @@
 		});
 	}
 
-	$: if ($playing) {
-		title = `${$album.artist} - ${$album.songs[$currentTrack]?.title}`;
+	$: if ($playerState.isPlaying) {
+		title = `${$album.artist} - ${$album.songs[$playerState.currentTrack]?.title}`;
 	}
 </script>
 
