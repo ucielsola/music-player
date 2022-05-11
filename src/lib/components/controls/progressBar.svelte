@@ -45,7 +45,7 @@
 	/>
 	<div class="times">
 		<span>{formatTime(isSeeking ? seekValue : $playerState.currentTime)}</span>
-		<span>-{formatTime($playerState.trackLength - $playerState.currentTime)}</span>
+		<span>-{formatTime($playerState.trackLength - $playerState.currentTime || 0)}</span>
 	</div>
 </div>
 
