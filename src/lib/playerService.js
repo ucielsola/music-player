@@ -7,7 +7,7 @@ let _album;
 
 export const playerState = writable({
 	isPlaying: false,
-	progress: false,
+	progress: 0,
 	currentTime: 0,
 	currentTrack: -1,
 	onShuffle: false,
