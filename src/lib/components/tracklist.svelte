@@ -1,5 +1,5 @@
 <script>
-	import { Play, currentTrack } from '$lib/playerService.js';
+	import { Play, playerState } from '$lib/playerService.js';
 	export let artist;
 	export let title;
 	export let tracks;
@@ -17,7 +17,7 @@
 		<h2>{title}</h2>
 		{#each tracks as track, i}
 			<div class="row" on:click={() => Play(i)}>
-				<h3 id={i} class={i === $currentTrack ? 'active' : ''}>
+				<h3 id={i} class={i === $playerState.currentTrack ? 'active' : ''}>
 					{'0' + (i + 1)} - {track.title}
 				</h3>
 				<span>{formatTime(track.duration)}</span>

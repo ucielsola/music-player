@@ -16,22 +16,6 @@ export const playerState = writable({
 	canResume: false
 });
 
-export const playing = writable(false);
-
-export const progress = writable(0);
-
-export const currentTrack = writable(-1);
-
-export const currentTime = writable(0);
-
-export const trackLength = writable(0);
-
-export const isShuffle = writable(false);
-
-export const isRepeat = writable(false);
-
-export const isMuted = writable(false);
-
 const events = ['ended', 'error', 'play', 'playing', 'pause', 'timeupdate', 'canplay'];
 
 const addAudioEvents = () => {
