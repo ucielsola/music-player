@@ -20,10 +20,11 @@
 
 	const seekEnd = (e) => {
 		Seek(e.target.value);
+		seekValue = e.target.value * length;
 		setTimeout(() => {
 			//debouncing to avoid bar thumb jumping
 			isSeeking = false;
-		}, 10);
+		}, 500);
 	};
 </script>
 
@@ -32,7 +33,7 @@
 		type="range"
 		id="slider"
 		on:touchstart={(e) => seekStart(e)}
-		on:click={(e) => seekStart(e)}
+		on:mousedown={(e) => seekStart(e)}
 		on:touchmove={(e) => seeking(e)}
 		on:input={(e) => seeking(e)}
 		on:touchend={(e) => seekEnd(e)}
@@ -75,6 +76,10 @@
 		.times span {
 			font-size: 0.8rem;
 			color: #ffffff;
+		}
+
+		input {
+			cursor: pointer;
 		}
 	}
 

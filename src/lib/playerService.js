@@ -40,7 +40,7 @@ const handlers = (e) => {
 			if (onRepeat) return Play(currentTrack);
 			if (onShuffle) return Play(randomTrack());
 			Play(currentTrack + 1);
-			playerState.set({ ...get(playerState), isPlaying: true });
+			playerState.set({ ...get(playerState), isPlaying: true, progress: 0 });
 			break;
 		case 'error':
 			playerState.set({ ...get(playerState), isPlaying: false });
