@@ -1,15 +1,16 @@
 :root {
 	/* colors */
-	--primary: #f91547;
-	--filter-primary: invert(17%) sepia(91%) saturate(5099%) hue-rotate(340deg) brightness(101%)
-		contrast(95%);
-	--secondary: hsla(177, 36%, 78%, 0.9);
+	/* --primary: #f91547; */
+	--primary: hsl(1deg 100% 68%);
+	--filter-primary: invert(52%) sepia(29%) saturate(5226%) hue-rotate(326deg) brightness(107%)
+		contrast(101%);
+	--secondary: hsla(0, 0%, 83%, 0.5);
 	--background: hsl(120, 33%, 1%);
-	--contrast: hsl(0, 0%, 93%);
+	--contrast: hsl(0, 0%, 83%);
 
 	/* effects */
 	--shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-	--glow: var(--contrast) 0px 16px 50px 12px;
+	--glow: var(--contrast) 0px 16px 50px 3px;
 
 	/* sizing */
 	--max-width: 500px;
@@ -32,11 +33,12 @@ html {
 	color: var(--contrast);
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 64rem) {
 	:root {
 		--glow: none;
 		--f-size-l: 4rem;
-		--f-size-m: 2rem;
+		--f-size-m: 1.6rem;
 		--f-size-s: 1.3rem;
+		--max-width: 64rem;
 	}
 }

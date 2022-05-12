@@ -58,4 +58,11 @@
 	img.play {
 		padding-left: 0.15rem;
 	}
+
+	@media screen and (min-width: 64rem) {
+		img {
+			filter: invert(100%) sepia(99%) saturate(0%) hue-rotate(345deg) brightness(105%)
+				contrast(100%);
+		}
+	}
 </style>

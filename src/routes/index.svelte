@@ -37,10 +37,14 @@
 	</div>
 {:else}
 	<main transition:fade={{ delay: 400 }}>
-		<Header artist={$album.artist} cover={$album.cover} back={$album.back} title={$album.title} />
-		<Tracklist tracks={$album.songs} artist={$album.artist} title={$album.title} />
-		<PlayerControls />
-		<Social />
+		<div class="desktop-row">
+			<Header artist={$album.artist} cover={$album.cover} back={$album.back} title={$album.title} />
+			<Tracklist tracks={$album.songs} artist={$album.artist} title={$album.title} />
+		</div>
+		<!-- <Social /> -->
+		<div class="controls-wrapper">
+			<PlayerControls />
+		</div>
 	</main>
 {/if}
 
@@ -58,6 +62,22 @@
 		min-height: 100vh;
 		max-width: var(--max-width);
 		margin-inline: auto;
-		padding-bottom: var(--controls-height);
+		padding-bottom: calc(var(--controls-height));
+	}
+
+	@media screen and (min-width: 64rem) {
+		main {
+			width: var(--max-width);
+			max-height: 768px;
+			padding-bottom: 0;
+			justify-content: center;
+		}
+
+		.desktop-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			min-height: 100%;
+		}
 	}
 </style>

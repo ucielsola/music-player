@@ -28,6 +28,7 @@
 	.wrapper {
 		position: relative;
 		padding: var(--padding);
+		max-width: 600px;
 	}
 
 	.out {

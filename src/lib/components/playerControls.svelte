@@ -28,6 +28,7 @@
 
 <style>
 	.container {
+		backdrop-filter: blur(5px);
 		position: fixed;
 		display: grid;
 		place-items: center;
@@ -38,7 +39,6 @@
 		max-width: var(--max-width);
 		border-radius: 1.5rem 1.5rem 0 0;
 		background-color: var(--secondary);
-		border-top: 1px solid hsl(120deg 33% 1% / 77%);
 		box-shadow: var(--glow);
 	}
 
@@ -80,6 +80,21 @@
 			-webkit-transform: translateY(0);
 			transform: translateY(0);
 			opacity: 1;
+		}
+	}
+
+	@media screen and (min-width: 64rem) {
+		.container {
+			position: relative;
+			background-color: #00000000;
+			backdrop-filter: none;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+		}
+
+		.title h1 {
+			color: #fff;
 		}
 	}
 </style>

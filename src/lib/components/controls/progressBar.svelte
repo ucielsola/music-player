@@ -71,6 +71,13 @@
 		color: #000000;
 	}
 
+	@media screen and (min-width: 64rem) {
+		.times span {
+			font-size: 0.8rem;
+			color: #ffffff;
+		}
+	}
+
 	input:disabled {
 		pointer-events: none;
 	}

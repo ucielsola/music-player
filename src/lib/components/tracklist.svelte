@@ -50,8 +50,13 @@
 		color: var(--primary);
 		font-size: var(--f-size-m);
 	}
-	h3,
+	h3 {
+		font-size: var(--f-size-s);
+		font-weight: 400;
+	}
+
 	span {
 		font-size: var(--f-size-s);
+		font-weight: bold;
 	}
 </style>
