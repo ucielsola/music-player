@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 	import { playerState, Seek } from '$lib/playerService.js';
 
 	let isSeeking = false;
@@ -175,4 +175,4 @@
 	input[type='range']:focus::-ms-fill-upper {
 		background: var(--primary);
 	}
-</style>
+</style> -->

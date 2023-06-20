@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 	import { playerState, toggleShuffle, toggleRepeat, toggleMute } from '$lib/playerService.js';
 </script>
 
@@ -37,4 +37,4 @@
 				contrast(100%);
 		}
 	}
-</style>
+</style> -->

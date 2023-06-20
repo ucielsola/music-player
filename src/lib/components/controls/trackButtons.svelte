@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 	import { playerState, Play, Pause, Next, Previous } from '$lib/playerService.js';
 </script>
 
@@ -65,4 +65,4 @@
 				contrast(100%);
 		}
 	}
-</style>
+</style> -->

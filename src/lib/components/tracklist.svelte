@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 	import { Play, playerState } from '$lib/playerService.js';
 	export let artist;
 	export let title;
@@ -59,4 +59,4 @@
 		font-size: var(--f-size-s);
 		font-weight: bold;
 	}
-</style>
+</style> -->
