@@ -1,62 +1,26 @@
 <script>
-	import { Play, playerState } from '$lib/playerService.js';
-	export let artist;
-	export let title;
-	export let tracks;
-
-	const formatTime = (ms = 0) => {
-		let minutes = Math.floor(ms / 60000);
-		let seconds = ((ms % 60000) / 1000).toFixed(0);
-		return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-	};
+	import { playTrack } from '$lib/player/actions';
+	import { playerStore } from '$lib/player/playerStore';
+	import durationFormatter from '$lib/utils/durationFormatter';
 </script>
 
-<div class="container">
-	{#if tracks}
-		<h1>{artist}</h1>
-		<h2>{title}</h2>
-		{#each tracks as track, i}
-			<div class="row" on:click={() => Play(i)}>
-				<h3 id={i} class={i === $playerState.currentTrack ? 'active' : ''}>
+<div class="w-full px-2">
+	{#if $playerStore.loaded}
+		{#each $playerStore?.album?.tracklist || [] as track, i}
+			<button
+				class="flex items-center justify-between w-full text-sm cursor-pointer text-stone-300"
+				class:!text-stone-50={track.id === $playerStore?.currentTrack?.id}
+				on:click={(e) => {
+					console.log(e);
+
+					playTrack(track);
+				}}
+			>
+				<span>
 					{'0' + (i + 1)} - {track.title}
-				</h3>
-				<span>{formatTime(track.duration)}</span>
-			</div>
+				</span>
+				<span>{durationFormatter(track.duration / 1000)}</span>
+			</button>
 		{/each}
 	{/if}
 </div>
-
-<style>
-	.container {
-		padding-inline: var(--padding);
-	}
-	.row {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		cursor: pointer;
-	}
-	.active {
-		color: var(--primary);
-	}
-
-	h1 {
-		color: var(--secondary);
-		font-size: var(--f-size-l);
-	}
-
-	h2 {
-		margin-block-start: -0.75rem;
-		color: var(--primary);
-		font-size: var(--f-size-m);
-	}
-	h3 {
-		font-size: var(--f-size-s);
-		font-weight: 400;
-	}
-
-	span {
-		font-size: var(--f-size-s);
-		font-weight: bold;
-	}
-</style>

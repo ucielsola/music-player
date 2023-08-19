@@ -1,14 +1,38 @@
-# Sveltekit - Music Player
+# create-svelte
 
-## Using my band's latest album [De Un Día Al Otro Aparecimos](https://open.spotify.com/album/16vnBEN3dqypklsrgrMTHq?si=k0MgLsLsTCS2l-euG6iYSw, 'Open on Spotify')
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-Built mainly for practicing design patterns, this project takes advantage of the many [SvelteKit](https://kit.svelte.com, 'Oficial Site') awesome features.
+## Creating a project
 
+If you're seeing this, you've probably already done this step. Congrats!
 
+```bash
+# create a new project in the current directory
+npm create svelte@latest
 
-### **Highlights**
+# create a new project in my-app
+npm create svelte@latest my-app
+```
 
-- **Server-Side Rendering** (good for SEO, a key feature for this kind of product)
-- **Svelte Stores** (used for managing App's state, Web Audio API, etc.)
-- [**GraphCMS**](https://graphcms.com) for content management.
-- [**Web Audio API**](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) (easy to use and very powerfull!)
+## Developing
+
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

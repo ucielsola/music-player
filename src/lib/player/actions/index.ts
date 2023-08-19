@@ -1,0 +1,11 @@
+export { default as createNewHowlerInstance } from './createNewHowlerInstance';
+export { default as fadeIn } from './fadeIn';
+export { default as fadeOut } from './fadeOut';
+export { default as playNextTrack } from './playNextTrack';
+export { default as playPrevTrack } from './playPrevTrack';
+export { default as playTrack } from './playTrack';
+export { default as seek } from './seek';
+export { default as setVolume } from './setVolume';
+export { default as togglePlay } from './togglePlay';
+export { default as toggleRepeat } from './toggleRepeat';
+export { default as toggleShuffle } from './toggleShuffle';

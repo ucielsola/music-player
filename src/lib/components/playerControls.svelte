@@ -1,20 +1,20 @@
-<script>
+<!-- <script>
 	import { playerState } from '$lib/playerService.js';
 
-	import { album } from '$lib/contentService.js';
+	// import { album } from '$lib/contentService.js';
 	import ProgressBar from './controls/progressBar.svelte';
 	import TrackButtons from './controls/trackButtons.svelte';
 	import OptionsButtons from './controls/optionsButtons.svelte';
 
-	const handleSeek = (e) => {
-		Seek(e.detail.value);
-	};
+	// const handleSeek = (e) => {
+	// 	Seek(e.detail.value);
+	// };
 
-	let nowPlaying = '';
+	// let nowPlaying = '';
 
-	$: if ($playerState.currentTrack >= 0) {
-		nowPlaying = `${$album.artist} - ${$album.songs[$playerState.currentTrack]?.title}`;
-	}
+	// $: if ($playerState.currentTrack >= 0) {
+	// 	nowPlaying = `${$album.artist} - ${$album.songs[$playerState.currentTrack]?.title}`;
+	// }
 </script>
 
 <div class="container slide-in-bottom">
@@ -97,4 +97,4 @@
 			color: #fff;
 		}
 	}
-</style>
+</style> -->
