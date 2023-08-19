@@ -1,6 +1,6 @@
 {
 	"name": "sud-player",
-	"version": "0.0.1",
+	"version": "2.0",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -14,7 +14,7 @@
 	"devDependencies": {
 		"@iconify/svelte": "^3.1.4",
 		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/kit": "^1.5.0",
+		"@sveltejs/kit": "1.22.6",
 		"autoprefixer": "^10.4.14",
 		"postcss": "^8.4.24",
 		"prettier": "^2.8.0",
