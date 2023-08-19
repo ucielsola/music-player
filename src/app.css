@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    background-image: url(/assets/img/noise.png);
+@layer base {
+	html {
+		-webkit-tap-highlight-color: transparent;
+	}
+}
+
+.noisy-bg {
+	background-image: url('assets/img/noise.png');
 }

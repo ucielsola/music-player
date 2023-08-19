@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
 	import { playerStore } from '$lib/player/playerStore';
+
 	import Cover from '$lib/components/Cover.svelte';
+
 	import type { Album, CoverImage } from '$lib/interfaces';
 
 	const INTERVAL_DURATION = 15000;
@@ -38,4 +41,6 @@
 	}, INTERVAL_DURATION);
 </script>
 
-<Cover image={currentImage} />
+<div in:fade>
+	<Cover image={currentImage} />
+</div>

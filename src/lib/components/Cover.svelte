@@ -19,7 +19,7 @@
 
 {#if image}
 	<div
-		class="w-full md:w-[32rem] bg-no-repeat bg-cover"
+		class="w-full max-w-[70vh] bg-no-repeat bg-cover"
 		class:blur={!loaded}
 		style={placeholderBackground}
 	>
@@ -27,7 +27,7 @@
 			src={image.url}
 			alt={$playerStore.album?.title}
 			loading="lazy"
-			class="opacity-0 transition-opacity duration-1000 ease-in-out"
+			class="transition-opacity duration-1000 ease-in-out opacity-0"
 			class:opacity-100={loaded}
 			on:load={hidePlaceholder}
 		/>

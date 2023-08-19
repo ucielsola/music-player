@@ -1,61 +1,52 @@
 import { get } from 'svelte/store';
 import { playerStore } from '$lib/player/playerStore';
-import { togglePlay, setCurrentTrack, setVolume } from '$lib/player/actions';
+import { togglePlay, playNextTrack, playPrevTrack, toggleRepeat, toggleShuffle, seek } from '$lib/player/actions';
 
 const keyCodes = {
-	downArrow: '40',
-	leftArrow: '37',
-	rightArrow: '39',
-	space: '32',
-	upArrow: '38',
-	b: '66',
-	m: '77',
-	n: '78',
-	p: '80',
-	r: '82',
-	s: '83'
+	b: 'b',
+	leftArrow: 'ArrowLeft',
+	m: 'm',
+	n: 'n',
+	p: 'p',
+	r: 'r',
+	rightArrow: 'ArrowRight',
+	s: 's',
+	space: " "
 };
 
 const keyCodesArray = Object.values(keyCodes);
 
 const keyCodesReducer = (e: KeyboardEvent): void => {
-	const { currentTrack, album, controls } = get(playerStore);
-	const keyCode = e.code;
+	console.log(e);
 
-	if (keyCodesArray.includes(keyCode)) {
-		switch (keyCode) {
-			case keyCodes.downArrow:
-				// TODO: Implement volume down
-				break;
+	const { controls } = get(playerStore);
+
+	if (keyCodesArray.includes(e.key)) {
+		let seekValue
+		switch (e.key) {
 			case keyCodes.leftArrow:
-				// TODO: Implement seek backward
+				seekValue = controls.currentTime - 3
+				seek(seekValue)
 				break;
 			case keyCodes.rightArrow:
-				// TODO: Implement seek forward
+				seekValue = controls.currentTime + 3
+				seek(seekValue)
 				break;
 			case keyCodes.space:
-				// TODO: Implement play/pause
-				break;
-			case keyCodes.upArrow:
-				// TODO: Implement volume up
+			case keyCodes.p:
+				togglePlay()
 				break;
 			case keyCodes.b:
-				// TODO: Implement back to previous track
-				break;
-			case keyCodes.m:
-				// TODO: Implement mute/unmute
+				playPrevTrack()
 				break;
 			case keyCodes.n:
-				// TODO: Implement next track
-				break;
-			case keyCodes.p:
-				// TODO: Implement play/pause
+				playNextTrack()
 				break;
 			case keyCodes.r:
-				// TODO: Implement toggle repeat
+				toggleRepeat()
 				break;
 			case keyCodes.s:
-				// TODO: Implement toggle shuffle
+				toggleShuffle()
 				break;
 			default:
 				break;

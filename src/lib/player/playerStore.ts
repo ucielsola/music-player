@@ -3,8 +3,9 @@ import type { Player } from '$lib/interfaces';
 
 const initialState: Player = {
 	loaded: false,
-	currentTrack: 0,
+	currentTrack: undefined,
 	album: undefined,
+	howlerInstance: undefined,
 	controls: {
 		isPlaying: false,
 		volume: 0,

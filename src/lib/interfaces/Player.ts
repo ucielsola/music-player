@@ -1,9 +1,12 @@
 import type { Album } from '$lib/interfaces/Album';
+import type { Howl } from 'howler';
+import type { Track } from './Track';
 
 export interface Player {
 	loaded: boolean;
-	currentTrack: number;
 	album?: Album;
+	currentTrack?: Track;
+	howlerInstance?: Howl;
 	controls: {
 		isPlaying: boolean;
 		volume: number;

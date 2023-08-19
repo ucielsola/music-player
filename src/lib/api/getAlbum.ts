@@ -1,38 +1,6 @@
-import type { Album } from '$lib/interfaces';
 import { GraphQLClient } from 'graphql-request';
 
-type QueryResponse = {
-	album: {
-		title: string;
-		artist: string;
-		cover: {
-			url: string;
-		};
-		coverPlaceholder: {
-			url: string;
-		};
-		back: {
-			url: string;
-		};
-		backPlaceholder: {
-			url: string;
-		};
-		platformLinks: Array<{
-			url: string;
-			name: string;
-			label: string;
-		}>;
-		songs: Array<{
-			title: string;
-			id: string;
-			file: {
-				url: string;
-			};
-			duration: number;
-		}>;
-		releaseDate: string;
-	};
-};
+import type { Album, QueryResponse } from '$lib/interfaces';
 
 const cms = new GraphQLClient(
 	'https://api-sa-east-1.graphcms.com/v2/cl2wb8fn61q2p01wbhuk6ggs4/master'
@@ -41,6 +9,9 @@ const cms = new GraphQLClient(
 const query = `
 query Album {
   album(where: {id: "cl2wbh6k54m4s0bloufabj4ek"}) {
+      title
+      artist
+      releaseDate
       back {
         url
       }
@@ -67,6 +38,7 @@ query Album {
 
 const getAlbum = async (): Promise<Album> => {
 	const response: QueryResponse = await cms.request(query);
+  console.log(response);
 
 	const album: Album = {
 		title: response.album.title,
@@ -79,7 +51,7 @@ const getAlbum = async (): Promise<Album> => {
 		tracklist: response.album.songs.map((song) => ({
 			title: song.title,
 			id: song.id,
-			file: song.file.url,
+      src: song.file.url,
 			duration: song.duration
 		})),
 		releaseDate: response.album.releaseDate

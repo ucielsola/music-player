@@ -3,28 +3,17 @@
 	import { fade } from 'svelte/transition';
 
 	import Player from '$lib/components/Player.svelte';
-	import Loader from '$lib/components/loader.svelte';
+	import Loader from '$lib/components/Loader.svelte';
 
-	import createAudioContext from '$lib/player/actions/createAudioContext';
 	import loadAlbum from '$lib/player/actions/loadAlbum';
 
 	import { playerStore } from '$lib/player/playerStore';
+	import keyCodesReducer from '$lib/player/keyCodesReducer';
 
-	const defaultTitle = 'SvelteKit Audio Player';
-	let title = defaultTitle;
-
-	$: loaded = $playerStore.loaded;
-
-	$: {
-		const albumTitle = $playerStore.album?.title;
-		const songTitle = $playerStore.album?.tracklist[$playerStore.currentTrack].title;
-
-		title = songTitle?.length ? `${songTitle} - ${albumTitle}` : albumTitle || defaultTitle;
-	}
+	let title = 'SvelteKit Audio Player';
 
 	onMount(() => {
 		loadAlbum();
-		createAudioContext();
 	});
 </script>
 
@@ -32,12 +21,14 @@
 	<title>{title}</title>
 </svelte:head>
 
-{#if loaded}
+<svelte:window on:keypress={keyCodesReducer}/>
+
+{#if $playerStore.loaded}
 	<main transition:fade={{ delay: 400 }}>
 		<Player />
 	</main>
 {:else}
-	<div out:fade class="flex items-center justify-center h-full">
+	<div out:fade class="flex items-center justify-center h-screen">
 		<Loader />
 	</div>
 {/if}

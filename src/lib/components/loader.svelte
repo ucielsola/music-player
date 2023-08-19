@@ -1,7 +1,7 @@
-<div role="status">
+<div role="status" class="w-min">
 	<svg
 		aria-hidden="true"
-		class="inline w-8 h-8 mr-2 text-stone-200 animate-spin dark:text-stone-600 fill-stone-600 dark:fill-stone-300"
+		class="inline w-8 h-8 text-stone-200 animate-spin dark:text-stone-600 fill-stone-600 dark:fill-stone-300"
 		viewBox="0 0 100 101"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"

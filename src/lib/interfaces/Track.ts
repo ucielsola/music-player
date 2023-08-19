@@ -1,4 +1,6 @@
 export interface Track {
+	src: string;
 	title: string;
-	duration: number;
+	id: string;
+	duration: number
 }
