@@ -29,7 +29,9 @@
 	"type": "module",
 	"dependencies": {
 		"@types/howler": "^2.2.7",
+		"@types/uuid": "^9.0.2",
 		"graphql-request": "^6.1.0",
-		"howler": "^2.2.3"
+		"howler": "^2.2.3",
+		"uuid": "^9.0.0"
 	}
 }
