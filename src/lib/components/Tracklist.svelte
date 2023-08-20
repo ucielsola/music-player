@@ -11,8 +11,6 @@
 				class="flex items-center justify-between w-full text-sm cursor-pointer text-stone-300"
 				class:!text-stone-50={track.id === $playerStore?.currentTrack?.id}
 				on:click={(e) => {
-					console.log(e);
-
 					playTrack(track);
 				}}
 			>

@@ -37,8 +37,7 @@ query Album {
 } `;
 
 const getAlbum = async (): Promise<Album> => {
-	const response: QueryResponse = await cms.request(query);
-  console.log(response);
+  const response: QueryResponse = await cms.request(query);
 
 	const album: Album = {
 		title: response.album.title,

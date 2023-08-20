@@ -17,8 +17,6 @@ const keyCodes = {
 const keyCodesArray = Object.values(keyCodes);
 
 const keyCodesReducer = (e: KeyboardEvent): void => {
-	console.log(e);
-
 	const { controls } = get(playerStore);
 
 	if (keyCodesArray.includes(e.key)) {
