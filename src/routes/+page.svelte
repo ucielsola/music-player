@@ -24,7 +24,7 @@
 <svelte:window on:keypress={keyCodesReducer}/>
 
 {#if $playerStore.loaded}
-	<main transition:fade={{ delay: 400 }}>
+	<main transition:fade={{ delay: 400 }} class="h-full">
 		<Player />
 	</main>
 {:else}
