@@ -4,7 +4,7 @@
 	import durationFormatter from '$lib/utils/durationFormatter';
 </script>
 
-<div class="w-full px-2">
+<div class="w-full max-w-[70vh] px-2">
 	{#if $playerStore.loaded}
 		{#each $playerStore?.album?.tracklist || [] as track, i}
 			<button
