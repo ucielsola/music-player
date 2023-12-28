@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-	import { writable } from 'svelte/store';
+	import { get, writable } from 'svelte/store';
 	import { v4 as uuidv4 } from 'uuid';
 
 	type _toast = {
@@ -8,6 +8,8 @@
 		type: 'error' | 'success' | 'warning';
 		timeout: number;
 	};
+
+	const MAX_TOASTS = 3;
 
 	interface ToastStore {
 		active: _toast[];
@@ -20,13 +22,20 @@
 	export const showToast = ({
 		text,
 		type,
-		timeout = 2000
+		timeout = 1000
 	}: {
 		text: string;
 		type: _toast['type'];
 		timeout?: number;
 	}) => {
 		const newToast: _toast = { text, type, id: uuidv4(), timeout };
+		const {active} = get(toasts);
+		
+		if (active.length >= MAX_TOASTS) {
+			toasts.update((state) => ({
+				active: state.active.toSpliced(0, 1)
+			}));
+		}
 
 		toasts.update((state) => ({
 			active: [...state.active, newToast]
