@@ -41,6 +41,6 @@
 	}, INTERVAL_DURATION);
 </script>
 
-<div in:fade>
+<div in:fade|global>
 	<Cover image={currentImage} />
 </div>

@@ -9,7 +9,7 @@
 </script>
 
 <span
-	transition:fade
+	transition:fade|global
 	{id}
 	class="relative p-2 border rounded-lg bg-stone-500/50 noisy-bg border-stone-50 text-stone-50 min-w-[16rem] text-center"
 >
