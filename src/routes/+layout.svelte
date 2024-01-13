@@ -1,7 +1,7 @@
 <script>
 	import ToastWrapper from '$lib/components/toasts/ToastWrapper.svelte';
-	import '../app.css';
+	import "../app.scss";
 </script>
 
-<ToastWrapper />
-<slot />
+<ToastWrapper></ToastWrapper>
+<slot></slot>

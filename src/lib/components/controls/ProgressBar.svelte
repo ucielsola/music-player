@@ -30,7 +30,7 @@
 
 	let isSeeking = false;
 	let seekValue: number;
-	let progress: number = 0
+	let progress: number = 0;
 	let currentTime = 0;
 	let refreshIntervalId: number;
 	let seekTimeoutId: number;
@@ -61,16 +61,16 @@
 	<input
 		type="range"
 		id="slider"
-		class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-stone-400"
+		class="px-1 rounded-lg appearance-none cursor-pointer focus:outline-none"
 		class:pointer-events-none={!currentTime && !isPlaying}
 		class:cursor-default={!currentTime && !isPlaying}
-		on:touchstart={(e) => seekStart()}
-		on:mousedown={(e) => seekStart()}
-		on:touchend={(e) => seekEnd(e)}
-		on:mouseup={(e) => seekEnd(e)}
+		on:touchstart={seekStart}
+		on:mousedown={seekStart}
+		on:touchend={seekEnd}
+		on:mouseup={seekEnd}
 		min={0}
 		max={1}
-		step={0.0001}
+		step={0.00001}
 		value={isSeeking ? seekValue : progress}
 		disabled={!currentTime && !isPlaying}
 	/>
@@ -84,93 +84,27 @@
 	</div>
 </div>
 
-<style>
-	input[type='range']:focus {
-		outline: none;
-	}
+<style lang="scss">
+	@use 'src/lib/scss/mixins.scss' as mx;
+	// TRACK
 	input[type='range']::-webkit-slider-runnable-track {
-		width: 100%;
-		height: 0.4rem;
-		cursor: pointer;
-		animate: 0.2s;
-		box-shadow: 0px 0px 0px #000000;
-		background: #505050;
+		@include mx.track;
+	}
 
-		border-radius: 5px;
-		border: 0px solid #000000;
-	}
-	input[type='range']::-webkit-slider-thumb {
-		box-shadow: 0px 0px 0px #000000;
-		border: 1px solid #bbbbbb6e;
-		height: 1rem;
-		width: 1rem;
-		border-radius: 50px;
-		background: #505050;
-		cursor: pointer;
-		-webkit-appearance: none;
-		margin-top: -5px;
-	}
-	input[type='range']:focus::-webkit-slider-runnable-track {
-		background: #505050;
-	}
 	input[type='range']::-moz-range-track {
-		width: 100%;
-		height: 8px;
-		cursor: pointer;
-		animate: 0.2s;
-		box-shadow: 0px 0px 0px #000000;
-		background: #505050;
-
-		border-radius: 5px;
-		border: 0px solid #000000;
+		@include mx.track;
 	}
+	// THUMB
+
+	input[type='range']::-webkit-slider-thumb {
+		@include mx.thumb;
+	}
+
 	input[type='range']::-moz-range-thumb {
-		box-shadow: 0px 0px 0px #000000;
-		border: 0px solid #000000;
-		height: 1.25rem;
-		width: 1.25rem;
-		border-radius: 50px;
-		background: #505050;
+		@include mx.thumb;
+	}
 
-		cursor: pointer;
-	}
-	input[type='range']::-ms-track {
-		width: 100%;
-		height: 8px;
-		cursor: pointer;
-		animate: 0.2s;
-		background: transparent;
-		border-color: transparent;
-		color: transparent;
-	}
-	input[type='range']::-ms-fill-lower {
-		background: #505050;
-
-		border: 0px solid #000000;
-		border-radius: 10px;
-		box-shadow: 0px 0px 0px #000000;
-	}
-	input[type='range']::-ms-fill-upper {
-		background: #505050;
-
-		border: 0px solid #000000;
-		border-radius: 10px;
-		box-shadow: 0px 0px 0px #000000;
-	}
 	input[type='range']::-ms-thumb {
-		margin-top: 1px;
-		box-shadow: 0px 0px 0px #000000;
-		border: 0px solid #000000;
-		height: 1.25rem;
-		width: 1.25rem;
-		border-radius: 50px;
-		background: #505050;
-		cursor: pointer;
-	}
-	input[type='range']:focus::-ms-fill-lower {
-		background: #505050;
-	}
-	input[type='range']:focus::-ms-fill-upper {
-		background: #505050;
+		@include mx.thumb;
 	}
 </style>
