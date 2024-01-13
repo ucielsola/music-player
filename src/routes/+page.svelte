@@ -1,29 +1,37 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 
 	import Player from '$lib/components/Player.svelte';
 	import Loader from '$lib/components/Loader.svelte';
 
-	import loadAlbum from '$lib/player/actions/loadAlbum';
-
 	import { playerStore } from '$lib/player/playerStore';
 	import keyCodesReducer from '$lib/player/keyCodesReducer';
 
-	let title = 'SvelteKit Audio Player';
+	let title = 'Cargando...';
+	let showLoader = true;
+	let timeoutId: number;
 
-	onMount(() => {
-		loadAlbum();
-	});
+	const CONTENT_DELAY = 1000;
+
+	$: if ($playerStore.loaded && showLoader) {
+		timeoutId = setTimeout(() => {
+			showLoader = false;
+			title = $playerStore.album?.title || 'Sin título';
+		}, CONTENT_DELAY);
+	}
+
+	$: if (!showLoader && timeoutId) {
+		clearTimeout(timeoutId);
+	}
 </script>
 
 <svelte:head>
 	<title>{title}</title>
 </svelte:head>
 
-<svelte:window on:keypress={keyCodesReducer}/>
+<svelte:window on:keypress={keyCodesReducer} />
 
-{#if $playerStore.loaded}
+{#if !showLoader}
 	<main transition:fade|global={{ delay: 400 }} class="h-full">
 		<Player />
 	</main>
