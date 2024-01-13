@@ -46,7 +46,7 @@
 	<button
 		on:click={toggleRepeat}
 		class="transition-colors duration-75 active:text-stone-500"
-		title={`${$LL.repeat()}: ${!$playerStore.controls.isRepeat ? $LL.on() : $LL.off()}`}
+		title={`${$LL.repeat()}: ${$playerStore.controls.isRepeat ? $LL.on() : $LL.off()}`}
 	>
 		{#if $playerStore.controls.isRepeat}
 			<Icon icon="pepicons-pop:repeat-circle-off" class="w-6 h-6 text-stone-50" />
@@ -58,7 +58,7 @@
 	<button
 		on:click={toggleShuffle}
 		class="transition-colors duration-75 active:text-stone-500"
-		title={`${$LL.shuffle()} ${!$playerStore.controls.isShuffle ? $LL.on() : $LL.off()}`}
+		title={`${$LL.shuffle()}: ${$playerStore.controls.isShuffle ? $LL.on() : $LL.off()}`}
 	>
 		{#if $playerStore.controls.isShuffle}
 			<Icon icon="pepicons-pop:list-circle-off" class="w-6 h-6 text-stone-50" />
