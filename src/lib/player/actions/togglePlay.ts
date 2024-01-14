@@ -19,11 +19,17 @@ const togglePlay = async () => {
 
 	if (howlerInstance && currentTrack) {
 		if (controls.isPlaying) {
-			await fadeOut()
-			return howlerInstance.pause()
+			fadeOut()
+
+			howlerInstance.once('fade', () => {
+				return howlerInstance.pause()
+			})
 		} else {
-			await fadeIn()
-			return howlerInstance.play()
+			fadeIn()
+
+			howlerInstance.once('fade', () => {
+				return howlerInstance.play()
+			})
 		}
 	}
 };

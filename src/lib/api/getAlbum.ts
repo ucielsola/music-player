@@ -17,6 +17,7 @@ const getAlbum = async ({ url, albumId }: { url: string, albumId: string }): Pro
       }
     }
     songs {
+      id
       title
       duration
       file {

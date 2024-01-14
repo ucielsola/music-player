@@ -26,7 +26,6 @@ export type QueryResponseSong = {
 }
 
 export type QueryResponseAlbumImage = {
-    id: string,
     image: {
         altText: string
         id: string

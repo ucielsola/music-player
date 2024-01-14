@@ -6,10 +6,7 @@ import { get } from 'svelte/store';
 export const createNewHowlerInstance = (track: Track) => {
     const { howlerInstance } = get(playerStore)
 
-    if (howlerInstance) {
-        howlerInstance.stop()
-        howlerInstance.unload()
-    }
+    if (howlerInstance) unloadHowlerInstance(howlerInstance)
 
     playerStore.update(state => ({
         ...state,
@@ -31,6 +28,12 @@ export const createNewHowlerInstance = (track: Track) => {
         currentTrack: track,
         howlerInstance: newHowlerInstance,
     }))
+}
+
+function unloadHowlerInstance(howlerInstance: Howl | undefined) {
+    if (!howlerInstance) return
+    howlerInstance.stop()
+    howlerInstance.unload()
 }
 
 export default createNewHowlerInstance;
