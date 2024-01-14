@@ -1,6 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
 
-import type { Album, QueryResponse, QueryResponseAlbumImage, QueryResponseLink, QueryResponseSong } from '$lib/interfaces';
+import type { Album, QueryResponse, QueryResponseAlbumImage, QueryResponseLink, QueryResponseMeta, QueryResponseSong } from '$lib/interfaces';
 
 const getAlbum = async ({ url, albumId }: { url: string, albumId: string }): Promise<Album> => {
   const cms = new GraphQLClient(url);
@@ -10,6 +10,15 @@ const getAlbum = async ({ url, albumId }: { url: string, albumId: string }): Pro
   album(where: {id: "${albumId}"}) {
     title
     artist
+     albumMeta {
+      id
+      meta {
+        id
+        name
+        property
+        content
+      }
+    } 
     albumImages {
       image {
         altText
@@ -40,7 +49,8 @@ const getAlbum = async ({ url, albumId }: { url: string, albumId: string }): Pro
     images: response.album.albumImages.map(mapAlbumImages).sort((a, b) => a.position - b.position),
     links: response.album.links.map(mapLinks).sort((a, b) => a.label.localeCompare(b.label)),
     tracklist: response.album.songs.map(mapSongs).sort((a, b) => a.position - b.position),
-    releaseDate: response.album.releaseDate
+    releaseDate: response.album.releaseDate,
+    albumMeta: response.album.albumMeta.map(mapMeta)
   };
 
   return album;
@@ -68,3 +78,5 @@ const mapSongs = (song: QueryResponseSong) => ({
   position: song.position,
   duration: song.duration
 })
+
+const mapMeta = (albumMeta: QueryResponseMeta) => albumMeta.meta

@@ -10,6 +10,7 @@
 	import Loader from '$lib/components/Loader.svelte';
 
 	import { playerStore } from '$lib/player/playerStore';
+	import MetaSet from '$lib/components/MetaSet.svelte';
 	import type { LocalizedString } from 'typesafe-i18n';
 
 	const locale = detectLocale();
@@ -23,6 +24,10 @@
 	let showLoader = true;
 	let timeoutId: number;
 	let title: string | LocalizedString = $LL.loading();
+
+	$: iconHref = $playerStore.controls.isPlaying
+		? 'assets/icons/play.png'
+		: 'assets/icons/pause.png';
 
 	const CONTENT_DELAY = 1000;
 
@@ -40,6 +45,11 @@
 
 <svelte:head>
 	<title>{title}</title>
+	<link rel="icon" href={iconHref} />
+
+	{#each $playerStore.albumMeta as metaSet}
+		<MetaSet {metaSet} />
+	{/each}
 </svelte:head>
 
 {#if !showLoader}

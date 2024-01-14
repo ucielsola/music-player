@@ -1,6 +1,5 @@
-import type { Track } from '$lib/interfaces/Track';
 import type { CoverImage } from '$lib/interfaces/CoverImage';
-import type { Link } from '$lib/interfaces/Link';
+import type { Link, Track, Meta } from '$lib/interfaces';
 
 export interface Album {
 	title: string;
@@ -9,4 +8,5 @@ export interface Album {
 	images: CoverImage[]
 	tracklist: Track[];
 	releaseDate: string;
+	albumMeta: Meta[][]
 }

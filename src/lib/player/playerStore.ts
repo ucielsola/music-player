@@ -5,6 +5,7 @@ const initialState: Player = {
 	loaded: false,
 	currentTrack: undefined,
 	album: undefined,
+	albumMeta: [],
 	howlerInstance: undefined,
 	controls: {
 		isPlaying: false,

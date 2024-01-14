@@ -7,6 +7,7 @@ export const hydrateAlbum = (album: Album) => {
     playerStore.update((state) => ({
         ...state,
         album,
-        loaded: true
+        loaded: true,
+        albumMeta: album.albumMeta
     }));
 }

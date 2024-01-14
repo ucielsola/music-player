@@ -1,10 +1,11 @@
-import type { Album } from '$lib/interfaces/Album';
+import type { Album, Meta } from '$lib/interfaces';
 import type { Howl } from 'howler';
 import type { Track } from './Track';
 
 export interface Player {
 	loaded: boolean;
 	album?: Album;
+	albumMeta: Meta[][];
 	currentTrack?: Track;
 	howlerInstance?: Howl;
 	controls: {

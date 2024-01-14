@@ -6,8 +6,21 @@ export type QueryResponse = {
         songs: QueryResponseSong[];
         releaseDate: string;
         albumImages: QueryResponseAlbumImage[]
+        albumMeta: QueryResponseMeta[]
     };
 };
+
+export type QueryResponseMeta = {
+    id: string;
+    meta: {
+        id: string;
+        name: string;
+        property: string;
+        content: string;
+    }[]
+}
+
+
 
 export type QueryResponseLink = {
     url: string;
