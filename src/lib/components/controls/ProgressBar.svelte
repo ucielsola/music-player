@@ -74,7 +74,6 @@
 		max={1}
 		step={0.00001}
 		value={isSeeking ? seekValue : progress}
-		disabled={!currentTime && !isPlaying}
 	/>
 	<div class="flex items-center justify-between w-full px-0.5 text-xs text-stone-50">
 		<spa class="text-center min-w-[2rem]">
