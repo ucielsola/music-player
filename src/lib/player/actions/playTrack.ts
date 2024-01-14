@@ -7,16 +7,19 @@ import { fadeOut, createNewHowlerInstance } from '$lib/player/actions';
 import type { Track } from '$lib/interfaces';
 
 const playTrack = async (track: Track) => {
-    const { album } = get(playerStore)
+    const { album, howlerInstance } = get(playerStore)
 
     if (!album?.tracklist.length) return
 
-    await fadeOut()
+    fadeOut()
 
-    createNewHowlerInstance(track)
+    howlerInstance?.once('fade', () => {
 
-    const newHowlerInstance = get(playerStore).howlerInstance
-    return newHowlerInstance?.play()
+        createNewHowlerInstance(track)
+
+        const newHowlerInstance = get(playerStore).howlerInstance
+        return newHowlerInstance?.play()
+    })
 };
 
 export default playTrack;

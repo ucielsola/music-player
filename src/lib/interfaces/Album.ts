@@ -1,17 +1,12 @@
 import type { Track } from '$lib/interfaces/Track';
+import type { CoverImage } from '$lib/interfaces/CoverImage';
+import type { Link } from '$lib/interfaces/Link';
 
 export interface Album {
 	title: string;
 	artist: string;
-	cover: string;
-	coverPlaceholder: string;
-	back: string;
-	backPlaceholder: string;
-	platformLinks: Array<{
-		url: string;
-		name: string;
-		label: string;
-	}>;
-	tracklist: Array<Track>;
+	links: Link[];
+	images: CoverImage[]
+	tracklist: Track[];
 	releaseDate: string;
 }

@@ -1,0 +1,52 @@
+@use './variables.scss' as vrs;
+
+@mixin track {
+	// reset
+	-webkit-appearance: none;
+	appearance: none;
+
+	// style
+	width: calc(100% - 8px);
+	height: 8px;
+	border: vrs.$track-border;
+
+	border-radius: 8px;
+
+	box-shadow: vrs.$track-box-shadow;
+	background: vrs.$track-bg;
+
+	cursor: pointer;
+
+	margin-bottom: 5px;
+}
+
+@mixin thumb {
+	// reset
+	-webkit-appearance: none;
+	appearance: none;
+
+	// style
+	height: 24px;
+	width: 24px;
+
+	margin-top: -7px; // center the thumb
+	margin-left: -2px; // small correction to put at the absolute beginning of the track
+
+	border-radius: 100%;
+
+	box-shadow: vrs.$thumb-box-shadow;
+
+	border: vrs.$thumb-border;
+
+	background: vrs.$thumb-bg;
+
+	cursor: pointer;
+
+	transition: all 200 ease-in-out;
+
+	&:hover {
+		background: vrs.$thumb-bg-hover;
+		border: vrs.$thumb-border-hover;
+		transform: scale(1.2);
+	}
+}

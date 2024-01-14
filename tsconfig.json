@@ -10,6 +10,6 @@
 		"sourceMap": true,
 		"strict": true,
 		"allowSyntheticDefaultImports": true,
-		"moduleResolution": "node"
+		"moduleResolution": "bundler"
 	}
 }

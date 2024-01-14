@@ -14,36 +14,38 @@ const playNextTrack = async () => {
     if (!currentTrack) return;
     if (!album?.tracklist.length) return;
 
-    await fadeOut();
+    fadeOut();
 
-    if (controls.isRepeat) {
-        createNewHowlerInstance(currentTrack);
-    }
-
-    const currentTrackIndex = album.tracklist.findIndex(
-        (track: Track) => track.id === currentTrack.id
-    );
-
-    if (controls.isShuffle) {
-        let randomTrackIndex = randomTrackNumber(album.tracklist.length);
-
-        while (randomTrackIndex === currentTrackIndex) {
-            randomTrackIndex = randomTrackNumber(album.tracklist.length);
+    howlerInstance.once('fade', () => {
+        if (controls.isRepeat) {
+            createNewHowlerInstance(currentTrack);
         }
 
-        const randomTrack: Track = album?.tracklist[randomTrackIndex];
+        const currentTrackIndex = album.tracklist.findIndex(
+            (track: Track) => track.id === currentTrack.id
+        );
 
-        createNewHowlerInstance(randomTrack);
-    } else {
-        const isLast = currentTrackIndex === album?.tracklist.length - 1;
+        if (controls.isShuffle) {
+            let randomTrackIndex = randomTrackNumber(album.tracklist.length);
 
-        const nextTrackIndex = isLast ? 0 : currentTrackIndex + 1;
+            while (randomTrackIndex === currentTrackIndex) {
+                randomTrackIndex = randomTrackNumber(album.tracklist.length);
+            }
 
-        createNewHowlerInstance(album?.tracklist[nextTrackIndex]);
-    }
+            const randomTrack: Track = album?.tracklist[randomTrackIndex];
 
-    const newHowlerInstance = get(playerStore).howlerInstance;
-    return newHowlerInstance?.play();
+            createNewHowlerInstance(randomTrack);
+        } else {
+            const isLast = currentTrackIndex === album?.tracklist.length - 1;
+
+            const nextTrackIndex = isLast ? 0 : currentTrackIndex + 1;
+
+            createNewHowlerInstance(album?.tracklist[nextTrackIndex]);
+        }
+
+        const newHowlerInstance = get(playerStore).howlerInstance;
+        return newHowlerInstance?.play();
+    });
 };
 
 export default playNextTrack;

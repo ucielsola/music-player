@@ -12,7 +12,7 @@
 	$: if ($playerStore.howlerInstance) setEventHandlers();
 </script>
 
-<div class="flex flex-col items-center justify-between gap-4 h-full">
+<div class="flex flex-col items-center justify-between h-full gap-4">
 	<CoverSlideshow />
 	<Tracklist />
 	<Social />

@@ -8,8 +8,6 @@
 
 	let loaded = false;
 
-	$: placeholderBackground = loaded ? undefined : `background-image: url(${image.placeholderUrl});`;
-
 	const hidePlaceholder = () => {
 		setTimeout(() => {
 			loaded = true;
@@ -18,11 +16,7 @@
 </script>
 
 {#if image}
-	<div
-		class="w-full max-w-[70vh] bg-no-repeat bg-cover"
-		class:blur={!loaded}
-		style={placeholderBackground}
-	>
+	<div class="w-full max-w-[70vh] bg-no-repeat bg-cover" class:blur={!loaded}>
 		<img
 			src={image.url}
 			alt={$playerStore.album?.title}

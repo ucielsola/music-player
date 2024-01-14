@@ -1,4 +1,4 @@
-export default function durationFormatter(duration: number) {
+export default function durationFormatter(duration: number): string {
     // source: https://stackoverflow.com/a/11486026
 
     // Hours, minutes and seconds
