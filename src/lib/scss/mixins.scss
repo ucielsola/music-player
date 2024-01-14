@@ -6,14 +6,18 @@
 	appearance: none;
 
 	// style
-	width: 100%;
-	height: 4px;
+	width: calc(100% - 8px);
+	height: 8px;
 	border: vrs.$track-border;
+
+	border-radius: 8px;
 
 	box-shadow: vrs.$track-box-shadow;
 	background: vrs.$track-bg;
 
 	cursor: pointer;
+
+	margin-bottom: 5px;
 }
 
 @mixin thumb {
@@ -22,10 +26,11 @@
 	appearance: none;
 
 	// style
-	height: 18px;
-	width: 18px;
+	height: 20px;
+	width: 20px;
 
-	margin-top: -8px;
+	margin-top: -7px; // center the thumb
+	margin-left: -2px; // small correction to put at the absolute beginning of the track
 
 	border-radius: 100%;
 
@@ -34,7 +39,6 @@
 	border: vrs.$thumb-border;
 
 	background: vrs.$thumb-bg;
-	// border: vrs.$thumb-border;
 
 	cursor: pointer;
 

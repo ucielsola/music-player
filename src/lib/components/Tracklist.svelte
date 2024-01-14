@@ -8,7 +8,7 @@
 	{#if $playerStore.loaded}
 		{#each $playerStore?.album?.tracklist || [] as track, i}
 			<button
-				class="flex items-center justify-between w-full text-sm cursor-pointer text-stone-300 hover:text-stone-100"
+				class="flex items-center justify-between w-full cursor-pointer text-stone-300 hover:text-stone-100"
 				class:!text-stone-50={track.id === $playerStore?.currentTrack?.id}
 				on:click={(e) => {
 					playTrack(track);

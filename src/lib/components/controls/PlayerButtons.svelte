@@ -67,3 +67,12 @@
 		{/if}
 	</button>
 </div>
+
+<div class="flex items-center justify-end w-full px-8">
+	<a href="https://ucielsola.me" target="_blank" title="UcielSola.me">
+		<Icon
+			icon="game-icons:wizard-face"
+			class="w-8 h-8 md:w-10 md:h-10 text-stone-50 hover:text-[cyan] transition-all duration-150 hover:scale-110"
+		/>
+	</a>
+</div>
