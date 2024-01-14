@@ -7,8 +7,6 @@
 
 	import { detectLocale } from '$i18n/i18n-util';
 
-	import ToastWrapper from '$lib/components/toasts/ToastWrapper.svelte';
-
 	import Loader from '$lib/components/Loader.svelte';
 
 	import { playerStore } from '$lib/player/playerStore';
@@ -36,8 +34,6 @@
 		clearTimeout(timeoutId);
 	}
 </script>
-
-<ToastWrapper />
 
 <svelte:head>
 	<title>{title}</title>
