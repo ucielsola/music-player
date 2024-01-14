@@ -3,4 +3,5 @@ export interface Track {
 	title: string;
 	id: string;
 	duration: number
+	position: number
 }
