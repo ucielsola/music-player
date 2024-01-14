@@ -2,7 +2,8 @@
 	import '../app.scss';
 	import { fade } from 'svelte/transition';
 	import { setLocale, LL } from '$i18n/i18n-svelte';
-	import { loadLocale } from '$i18n/i18n-util.sync';
+	import { initFormatters } from '$i18n/formatters';
+	import { loadLocale, loadFormatters } from '$i18n/i18n-util.sync';
 
 	import { detectLocale } from '$i18n/i18n-util';
 
@@ -14,6 +15,9 @@
 	const locale = detectLocale();
 
 	loadLocale(locale);
+	loadFormatters(locale);
+
+	initFormatters(locale);
 	setLocale(locale);
 
 	let showLoader = true;

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import LL from '$i18n/i18n-svelte';
+
 	import { seek } from '$lib/player/actions';
 	import { playerStore } from '$lib/player/playerStore';
 	import durationFormatter from '$lib/utils/durationFormatter';
@@ -76,10 +78,10 @@
 	/>
 	<div class="flex items-center justify-between w-full px-0.5 text-xs text-stone-50">
 		<spa class="text-center min-w-[2rem]">
-			{durationFormatter(isSeeking ? seekValue : currentTime)}
+			{$LL.duration(isSeeking ? seekValue : currentTime)}
 		</spa>
 		<span class="text-center min-w-[2rem]">
-			-{durationFormatter(trackLength - currentTime || 0)}
+			{$LL.duration(trackLength - currentTime || 0)}
 		</span>
 	</div>
 </div>

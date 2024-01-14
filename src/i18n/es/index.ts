@@ -11,6 +11,7 @@ const es = {
 	repeat: 'Repetir',
 	on: 'Encendido',
 	off: 'Apagado',
+	duration: '{0|duration}'
 } satisfies BaseTranslation
 
 export default es

@@ -11,6 +11,7 @@ const en = {
 	repeat: 'Repeat',
 	on: 'On',
 	off: 'Off',
+	duration: '{0|duration}'
 } satisfies Translation
 
 export default en

@@ -1,7 +1,8 @@
 <script>
+	import LL from '$i18n/i18n-svelte';
+
 	import { playTrack } from '$lib/player/actions';
 	import { playerStore } from '$lib/player/playerStore';
-	import durationFormatter from '$lib/utils/durationFormatter';
 </script>
 
 <div class="w-full max-w-[70vh] px-2">
@@ -17,7 +18,7 @@
 				<span>
 					{'0' + (i + 1)} - {track.title}
 				</span>
-				<span>{durationFormatter(track.duration / 1000)}</span>
+				<span>{$LL.duration(track.duration / 1000)}</span>
 			</button>
 		{/each}
 	{/if}
