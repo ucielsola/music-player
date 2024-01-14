@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" class="noisy-bg">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>SvelteKit Music Player</title>
+	</head>
+
+	<style>
+		* {
+			box-sizing: border-box;
+			position: relative;
+			min-width: 0;
+		}
+
+		html {
+			display: flex;
+			justify-content: center;
+		}
+
+		body {
+			min-height: 100dvh;
+			max-width: 30rem;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4 {
+			text-wrap: balance;
+			font-family: sans-serif;
+		}
+
+		h1 {
+			text-align: center;
+			color: aliceblue;
+			font-size: 4rem;
+		}
+
+		h3 {
+			font-size: 2.3rem;
+			color: aliceblue;
+		}
+
+		h4 {
+			margin: 0;
+			font-size: 2rem;
+		}
+
+		p {
+			text-wrap: pretty;
+		}
+
+		a {
+			text-decoration: none;
+			color: antiquewhite;
+		}
+
+		.list {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+		}
+
+		.source {
+			margin-top: 5rem;
+		}
+
+		.noisy-bg {
+			background-image: url(./noise.png);
+			background-repeat: repeat;
+			background-color: rgb(49, 49, 49);
+		}
+	</style>
+
+	<body>
+		<h1>Music Player</h1>
+
+		<h3>Featured Albums</h3>
+
+		<div class="list">
+			<h4><a href="https://sud.ucielsola.me" target="_blank">* SUD - De un Día al Otro Aparecimos (TANGO -
+					2020)</a>
+			</h4>
+
+			<h4><a href="https://sabaznicolas.ar" target="_blank">* Nicolas Sabaz (2023)</a>
+			</h4>
+		</div>
+
+		<hr>
+
+		<h4 class="source">
+			<a href="https://github.com/ucielsola/music-player" target="_blank"> > Source Code</a>
+		</h4>
+
+	</body>
+
+</html>
