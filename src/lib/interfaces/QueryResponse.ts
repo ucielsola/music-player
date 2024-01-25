@@ -26,6 +26,9 @@ export type QueryResponseLink = {
     url: string;
     name: string;
     label: string;
+    asset: {
+        url: string;
+    }
 }
 
 export type QueryResponseSong = {

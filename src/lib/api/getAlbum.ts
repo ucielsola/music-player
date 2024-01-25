@@ -1,6 +1,7 @@
 import { GraphQLClient } from 'graphql-request';
 
 import type { Album, QueryResponse, QueryResponseAlbumImage, QueryResponseLink, QueryResponseMeta, QueryResponseSong } from '$lib/interfaces';
+import { assets } from '__sveltekit/paths';
 
 const getAlbum = async ({ url, albumId }: { url: string, albumId: string }): Promise<Album> => {
   const cms = new GraphQLClient(url);
@@ -37,6 +38,9 @@ const getAlbum = async ({ url, albumId }: { url: string, albumId: string }): Pro
       label
       url
       name
+       asset {
+        url
+      }
     }
   }
 } `;
@@ -68,7 +72,10 @@ const mapAlbumImages = (albumImages: QueryResponseAlbumImage) => ({
 const mapLinks = (links: QueryResponseLink) => ({
   url: links.url,
   name: links.name,
-  label: links.label
+  label: links.label,
+  asset: links.asset ? {
+    url: links.asset?.url
+  } : null
 })
 
 const mapSongs = (song: QueryResponseSong) => ({

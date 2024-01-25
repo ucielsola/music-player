@@ -6,13 +6,17 @@
 <div class="flex flex-wrap items-center gap-6 px-6 justify-evenly">
 	{#each $playerStore?.album?.links || [] as link}
 		<a
-			href={link.url}
+			href={link.asset?.url || link.url}
 			title={`${$playerStore.album?.title} - ${link.label}`}
 			target="_blank"
 			rel="noreferrer"
 			class="flex items-center gap-1.5 transition-opacity duration-75 active:opacity-70 {link.name}"
 		>
-			<Icon icon={`simple-icons:${link.name}`} class="w-4 h-4" />
+			{#if link.asset?.url}
+				<Icon icon={`humbleicons:download`} class="w-4 h-4" />
+			{:else}
+				<Icon icon={`simple-icons:${link.name}`} class="w-4 h-4" />
+			{/if}
 
 			<span>
 				{link.label}
@@ -22,6 +26,7 @@
 </div>
 
 <style global>
+	a,
 	.amazon,
 	.tidal {
 		color: #fff;
